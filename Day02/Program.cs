@@ -19,3 +19,11 @@ else
 }
 
 Console.ReadKey();
+
+
+static void Greet(string name)
+{
+    Console.WriteLine("Hello " + name);
+}
+
+Greet("Abdullah");

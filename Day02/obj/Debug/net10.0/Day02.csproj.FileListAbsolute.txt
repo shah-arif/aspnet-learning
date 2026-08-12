@@ -12,3 +12,4 @@
 /home/abdullah/dev/aspnet-learning/Day02/obj/Debug/net10.0/Day02.pdb
 /home/abdullah/dev/aspnet-learning/Day02/obj/Debug/net10.0/Day02.genruntimeconfig.cache
 /home/abdullah/dev/aspnet-learning/Day02/obj/Debug/net10.0/ref/Day02.dll
+/home/abdullah/dev/aspnet-learning/Day02/obj/Debug/net10.0/Day02.sourcelink.json
