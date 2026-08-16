@@ -1,0 +1,15 @@
+/home/abdullah/dev/aspnet-learning/Day04/bin/Debug/net10.0/Day04
+/home/abdullah/dev/aspnet-learning/Day04/bin/Debug/net10.0/Day04.deps.json
+/home/abdullah/dev/aspnet-learning/Day04/bin/Debug/net10.0/Day04.runtimeconfig.json
+/home/abdullah/dev/aspnet-learning/Day04/bin/Debug/net10.0/Day04.dll
+/home/abdullah/dev/aspnet-learning/Day04/bin/Debug/net10.0/Day04.pdb
+/home/abdullah/dev/aspnet-learning/Day04/obj/Debug/net10.0/Day04.GeneratedMSBuildEditorConfig.editorconfig
+/home/abdullah/dev/aspnet-learning/Day04/obj/Debug/net10.0/Day04.AssemblyInfoInputs.cache
+/home/abdullah/dev/aspnet-learning/Day04/obj/Debug/net10.0/Day04.AssemblyInfo.cs
+/home/abdullah/dev/aspnet-learning/Day04/obj/Debug/net10.0/Day04.csproj.CoreCompileInputs.cache
+/home/abdullah/dev/aspnet-learning/Day04/obj/Debug/net10.0/Day04.sourcelink.json
+/home/abdullah/dev/aspnet-learning/Day04/obj/Debug/net10.0/Day04.dll
+/home/abdullah/dev/aspnet-learning/Day04/obj/Debug/net10.0/refint/Day04.dll
+/home/abdullah/dev/aspnet-learning/Day04/obj/Debug/net10.0/Day04.pdb
+/home/abdullah/dev/aspnet-learning/Day04/obj/Debug/net10.0/Day04.genruntimeconfig.cache
+/home/abdullah/dev/aspnet-learning/Day04/obj/Debug/net10.0/ref/Day04.dll
