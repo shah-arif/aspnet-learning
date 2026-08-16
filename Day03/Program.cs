@@ -50,6 +50,9 @@
 // product.IncreaseStock(10);
 // Console.WriteLine(product.Stock);
 
-Dog dog = new Dog();
-dog.Eat();
-dog.Bark();
+// Dog dog = new Dog();
+// dog.Eat();
+// dog.Bark();
+
+Animal animal = new Dog();
+animal.Speak();

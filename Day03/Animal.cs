@@ -1,17 +1,35 @@
 
+// class Animal
+// {
+//     public void Eat()
+//     {
+//         Console.WriteLine("Eating...");
+//     }
+// }
+
+// class Dog : Animal
+// {
+//     public void Bark()
+//     {
+//         Console.WriteLine("Barking...");
+//     }
+// }
+
+
+// Polymorphism
+
 class Animal
 {
-    public void Eat()
+    public virtual void Speak()
     {
-        Console.WriteLine("Eating...");
+        Console.WriteLine("Animal Speaking...");
     }
 }
 
 class Dog : Animal
 {
-    public void Bark()
+    public override void Speak()
     {
-        Console.WriteLine("Barking...");
+        Console.WriteLine("Dog Speaking...");
     }
 }
-

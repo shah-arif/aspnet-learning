@@ -8,6 +8,10 @@ public class Product
     {
         Stock += quantity;
     }
+    public void DecreaseStock(int quantity)
+    {
+        Stock -= quantity;
+    }
     public bool HasStock(int quantity)
     {
         return Stock >= quantity;
