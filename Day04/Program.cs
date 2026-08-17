@@ -179,14 +179,14 @@
 // Console.WriteLine(int.Parse(input));
 
 
-List<Product> products = new()
-{
-    new Product { Id = 1, Name = "Apple", Price = 250m },
-    new Product { Id = 2, Name = "Orange", Price = 50m },
-    new Product { Id = 3, Name = "Banana", Price = 112m },
-    new Product { Id = 4, Name = "Mango", Price = 340m },
-    new Product { Id = 5, Name = "Pineapple", Price = 60m },
-};
+// List<Product> products = new()
+// {
+//     new Product { Id = 1, Name = "Apple", Price = 250m },
+//     new Product { Id = 2, Name = "Orange", Price = 50m },
+//     new Product { Id = 3, Name = "Banana", Price = 112m },
+//     new Product { Id = 4, Name = "Mango", Price = 340m },
+//     new Product { Id = 5, Name = "Pineapple", Price = 60m },
+// };
 
 // List<Product> result = new();
 
@@ -198,31 +198,31 @@ List<Product> products = new()
 //     }
 // }
 
-// With LINQ
-var result = products
-    .Where(p => p.Price > 100m)
-    .ToList();
+// // With LINQ
+// var result = products
+//     .Where(p => p.Price > 100m)
+//     .ToList();
 
-var expensiveProducts = products
-    .Where(p => p.Price > 300m)
-    .ToList();
+// var expensiveProducts = products
+//     .Where(p => p.Price > 300m)
+//     .ToList();
 
-var names = products
-    .Select(p => p.Name)
-    .ToList();
+// var names = products
+//     .Select(p => p.Name)
+//     .ToList();
 
-var sortedProducts = products
-    .OrderBy(p => p.Price)
-    // .OrderByDescending(p => p.Price)
-    .ToList();
+// var sortedProducts = products
+//     .OrderBy(p => p.Price)
+//     // .OrderByDescending(p => p.Price)
+//     .ToList();
 
 
-var newProducts = sortedProducts;
+// var newProducts = sortedProducts;
 
-var newProducts2 = sortedProducts
-    .FirstOrDefault(p => p.Price > 100m);
+// var newProducts2 = sortedProducts
+//     .FirstOrDefault(p => p.Price > 100m);
 
-bool exists = sortedProducts.Any(p => p.Price > 600m);
+// bool exists = sortedProducts.Any(p => p.Price > 600m);
 
 // Console.WriteLine(result.Count);
 
@@ -286,15 +286,117 @@ bool exists = sortedProducts.Any(p => p.Price > 600m);
 // Console.WriteLine($"Min price: {min}");
 
 
-var chainResult = products
-    .Where(p => p.Price > 100m)
-    .OrderByDescending(p => p.Price)
+// var chainResult = products
+//     .Where(p => p.Price > 100m)
+//     .OrderByDescending(p => p.Price)
+//     .Select(p => p.Name)
+//     .ToList();
+
+// // foreach (var name in chainResult)
+// // {
+// //     Console.WriteLine(name);
+// // }
+
+// chainResult.ForEach(name => Console.WriteLine(name));
+
+
+List<Product> products = new()
+{
+    new Product { Id = 1, Name = "Apple", Price = 250m, Stock = 10, Category = "Fruit" },
+    new Product { Id = 2, Name = "Orange", Price = 50m, Stock = 5, Category = "Fruit" },
+    new Product { Id = 3, Name = "Banana", Price = 112m, Stock = 20, Category = "Fruit" },
+    new Product { Id = 4, Name = "Mango", Price = 340m, Stock = 15, Category = "Fruit" },
+    new Product { Id = 5, Name = "Pineapple", Price = 60m, Stock = 0, Category = "Fruit" },
+    new Product { Id = 6, Name = "Apple", Price = 250m, Stock = 10, Category = "Fruit" },
+    new Product { Id = 7, Name = "Carrot", Price = 50m, Stock = 5, Category = "Vegetable" },
+    new Product { Id = 8, Name = "Cucumber", Price = 112m, Stock = 20, Category = "Vegetable" },
+    new Product { Id = 9, Name = "Tomato", Price = 440m, Stock = 15, Category = "Vegetable" },
+    new Product { Id = 10, Name = "Potato", Price = 60m, Stock = 0, Category = "Vegetable" },
+};
+
+var expensiveProducts = products
+    .Where(p => p.Price >= 250m)
+    .ToList();
+
+var outOfStockProducts = products
+    .Where(p => p.Stock == 0)
+    .ToList();
+
+var productName = products
     .Select(p => p.Name)
     .ToList();
 
-// foreach (var name in chainResult)
+var highestToLowestPrice = products
+    .OrderByDescending(p => p.Price)
+    .ToList();
+
+var lowestToHighestPrice = products
+    .OrderBy(p => p.Price)
+    .ToList();
+
+bool tooExpensiveExist = products.Any(p => p.Price >350m);
+
+var fruits = products
+    .Where(p => p.Category == "Fruit")
+    .ToList();
+
+var vegetables = products
+    .Where(p => p.Category == "Vegetable")
+    .ToList();
+
+// // Print Fruits | Vegetables
+// Console.WriteLine("Fruits");
+// foreach (var product in fruits)
 // {
-//     Console.WriteLine(name);
+//     Console.WriteLine(product.Name + " " + product.Price);
+// }
+// Console.WriteLine();
+// Console.WriteLine("Vegetables");
+// foreach (var product in vegetables)
+// {
+//     Console.WriteLine(product.Name + " " + product.Price);
 // }
 
-chainResult.ForEach(name => Console.WriteLine(name));
+// Console.WriteLine(tooExpensiveExist);
+
+// var product = products.FirstOrDefault(p => p.Id == 2);
+// if (product !=null)
+// Console.WriteLine(product.Name + " " + product.Price);
+
+
+// static Product getProductById(List<Product> products, int id)
+// {
+//     var product = products.FirstOrDefault(p => p.Id == id);
+//     if (product == null)
+//     {
+//         throw new Exception("Product not found");
+//     }
+//     return product;
+// }
+
+// var product = getProductById(products, 2);
+
+// Console.WriteLine(product.Name + " " + product.Price);
+
+// expensiveProducts.ForEach(product => Console.WriteLine(product.Name + " " + product.Price));
+// outOfStockProducts.ForEach(product => Console.WriteLine(product.Name + " " + product.Stock));
+// productName.ForEach(name => Console.WriteLine(name));
+// highestToLowestPrice.ForEach(product => Console.WriteLine(product.Name + " " + product.Price));
+// lowestToHighestPrice.ForEach(product => Console.WriteLine(product.Name + " " + product.Price));
+
+
+List<OrderItem> orderItems = new()
+{
+    new OrderItem { ProductId = 1, Quantity = 2 },
+    new OrderItem { ProductId = 2, Quantity = 1 },
+    new OrderItem { ProductId = 3, Quantity = 3 },
+};
+
+
+
+var totalSale = orderItems
+    .Sum(item => item.Quantity * products.First(p => p.Id == item.ProductId).Price);
+
+decimal totalPrice = totalSale;
+
+Console.WriteLine($"Total price: {totalPrice}");
