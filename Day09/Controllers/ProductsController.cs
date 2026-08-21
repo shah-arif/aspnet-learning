@@ -20,13 +20,12 @@ public class ProductsController : ControllerBase
     [HttpGet] // curl localhost:5237/api/products?page=1&pageSize=10
     public IActionResult GetProducts([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
-        // Prevent negative numbers or invalid page sizes
         if (page < 1) page = 1;
         if (pageSize < 1) pageSize = 10;
 
         var paginatedProducts = products
-            .Skip((page - 1) * pageSize) // 1. Skip past previous pages
-            .Take(pageSize)               // 2. Take only current page size
+            .Skip((page - 1) * pageSize)
+            .Take(pageSize)
             .ToList();
 
         var paginatedResponse = new PaginatedProductsResponse
