@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
-    private static readonly List<Product> products = new()
+    private static readonly List<Product> Products = new()
     {
         new Product { Id = 1, Name = "Apple", Price = 1.2m, Stock = 10, Category = "Fruit" },
         new Product { Id = 2, Name = "Orange", Price = 1.5m, Stock = 15, Category = "Fruit" },
@@ -23,7 +23,7 @@ public class ProductsController : ControllerBase
         if (page < 1) page = 1;
         if (pageSize < 1) pageSize = 10;
 
-        var paginatedProducts = products
+        var paginatedProducts = Products
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToList();
@@ -33,8 +33,8 @@ public class ProductsController : ControllerBase
             Products = paginatedProducts,
             Page = page,
             PageSize = pageSize,
-            TotalPages = (int)Math.Ceiling(products.Count / (double)pageSize),
-            TotalProducts = products.Count
+            TotalPages = (int)Math.Ceiling(Products.Count / (double)pageSize),
+            TotalProducts = Products.Count
         };
 
         return Ok(paginatedResponse);
@@ -43,7 +43,7 @@ public class ProductsController : ControllerBase
     [HttpGet("{id:int}")] // curl localhost:5237/api/products/1
     public IActionResult GetProduct(int id)
     {
-        var product = products.FirstOrDefault(p => p.Id == id);
+        var product = Products.FirstOrDefault(p => p.Id == id);
 
         if (product is null)
         {
@@ -58,21 +58,21 @@ public class ProductsController : ControllerBase
     {
         var product = new Product
         {
-            Id = products.Max(p => p.Id) + 1,
+            Id = Products.Max(p => p.Id) + 1,
             Name = request.Name,
             Price = request.Price,
             Stock = request.Stock,
             Category = request.Category
         };
 
-        products.Add(product);
+        Products.Add(product);
         return CreatedAtAction(nameof(GetProduct), new { id = product.Id} , product);
     }
 
     [HttpPut("{id:int}")] // curl -X PUT localhost:5237/api/products/1 -H "Content-Type: application/json" -d '{"name":"Apple","price":1.2,"stock":10,"category":"Fruit"}'
     public IActionResult UpdateProduct(int id, UpdateProductRequest request)
     {
-        var product = products.FirstOrDefault(p => p.Id == id);
+        var product = Products.FirstOrDefault(p => p.Id == id);
 
         if (product is null)
         {
@@ -90,7 +90,7 @@ public class ProductsController : ControllerBase
     [HttpPatch("{id:int}")] // curl -X PATCH localhost:5237/api/products/1 -H "Content-Type: application/json" -d '{"name":"Apple","price":1.2,"stock":10,"category":"Fruit"}'
     public IActionResult PatchProduct(int id, PatchProductRequest request)
     {
-        var product = products.FirstOrDefault(p => p.Id == id);
+        var product = Products.FirstOrDefault(p => p.Id == id);
         if (product is null)
         {
             return NotFound(new { message = $"Product with id {id} not found" });
@@ -107,21 +107,21 @@ public class ProductsController : ControllerBase
     [HttpDelete("{id:int}")] // curl -X DELETE localhost:5237/api/products/1
     public IActionResult DeleteProduct(int id)
     {
-        var product = products.FirstOrDefault(p => p.Id == id);
+        var product = Products.FirstOrDefault(p => p.Id == id);
 
         if (product is null)
         {
             return NotFound(new { message = $"Product with id {id} not found" });
         }
 
-        products.Remove(product);
+        Products.Remove(product);
         return NoContent();
     }
 
     [HttpGet("search")] // curl localhost:5237/api/products/search?category=Fruit
     public IActionResult SearchProducts(string? category)
     {
-        var query = products.AsEnumerable();
+        var query = Products.AsEnumerable();
 
         if (!string.IsNullOrWhiteSpace(category))
         {
@@ -134,7 +134,7 @@ public class ProductsController : ControllerBase
     [HttpGet("filter")] // curl localhost:5237/api/products/filter?category=Fruit&minPrice=1.2&maxPrice=1.9
     public IActionResult FilterProducts(string? category, decimal? minPrice, decimal? maxPrice)
     {
-        var query = products.AsEnumerable();
+        var query = Products.AsEnumerable();
 
         if (!string.IsNullOrWhiteSpace(category))
         {
